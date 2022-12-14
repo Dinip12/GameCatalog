@@ -1,0 +1,102 @@
+﻿@using GameCatalog.Controllers
+@using GameCatalog.Entity
+@model GameCatalog.ViewModels.Display
+@{
+    ViewBag.Title = "USER LIST";
+    Layout = "_Layout";
+}
+<div class="grid" style="margin-top:300px; margin-bottom:150px; color:white;">
+
+        
+            <form action="/Home/AdminView" method="get">
+                    <div class = "row" style = "margin-left:250px">
+                        <div class = "col-4">
+                            @Html.LabelFor(x=>x.Filter.Title)
+                        </div>
+                        
+                        
+                        <div class = "col-2">
+                        </div>
+                    </div>
+                    <div class = "row" style = "margin-left:250px">
+                        <div class = "col-4">
+                            @Html.TextBoxFor(x=>x.Filter.Title)
+                        </div>
+                       
+                       
+                        <div class = "col-2">
+                            <input type = "submit" value = "Filter"/>
+                            <a href="/Home/AdminView">Clear</a>
+                        </div>
+                    </div>
+            </form>
+        
+
+
+
+
+
+        <div class = "row" style = "margin-left:250px">
+            <div class = "col-3">
+                <a class = "left"href="/Home/Create">NEW</a>
+            </div>
+        </div>
+
+    <div class = "row" style = "margin-left:250px">
+
+        <div class="col-1 textColor">
+            Title
+        </div>
+
+        <div class="col-1 textColor">
+            Description
+        </div>
+        <div class="col-1 textColor">
+            ReleaseDate
+        </div>
+        <div class="col-1 textColor">
+            Stars
+        </div>
+
+        <div class="col-1 textColor">
+            Downloads
+        </div>
+        <div class="col-1 textColor">
+            Actions
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+@foreach (var item in Model.Games) {
+    <div class = "row" style = "margin-left:250px">
+            <div class = "col-1">
+                @item.Title
+            </div>
+
+            <div class = "col-1">
+                @item.Description
+            </div>
+
+            <div class = "col-1">
+                @item.ReleaseDate
+            </div>
+            <div class="col-1">
+                @item.Stars
+            </div>
+            <div class="col-1">
+                @item.Downloads
+            </div>
+            
+            <div class = "col-2">
+                @Html.ActionLink("Edit ", "Edit", new { id=item.Id })|
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new{onclick ="return confirm('Do you realy want to delete')"})
+            </div>
+    </div>
+}
+    <div style = "margin-left:250px">
+            @{
+                Html.RenderPartial("/Views/Shared/PagerPartial.cshtml", Model.Pager);
+            }
+    </div>
+        
+    </div>

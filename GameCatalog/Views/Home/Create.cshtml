@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Create Tractor";
+	Layout = "_Layout";
+}
+@model GameCatalog.ViewModels.CreateVM
+
+<div style="margin-top:200px;">
+
+<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Create your Game</p>
+						<h1>Create Game</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<div class="contact-form mt-150 mb-150">
+		<center>
+			<form action="/Home/Create" method="post" enctype="multipart/form-data">
+				<p>
+					<input type="text" placeholder="Title" name="model.Title" id="model.Title">
+				</p				
+				<p>
+					<input type="text" placeholder="Description" name="model.description" id="model.description">
+				</p>
+				<input type="date" name="model.releasedate" id="model.releasedate"
+       value="2018-07-22"
+       min="2000-01-01" max="2023-12-31">
+				<p>
+					<input type="text" placeholder="Stars" name="model.stars" id="model.stars">
+				</p>
+				<p>
+					<input type="text" placeholder="Dowlnloads" name="model.downloads" id="model.downloads">
+				</p>
+				<p>
+					<input type="file" name="model.file" id="model.tractor" accept=".png" placeholder="Tractor Photo"></input>
+					
+				</p>
+				<p><input type="submit" value="Create"></p>
+			</form>
+		</center>	
+	</div>
+	</div>

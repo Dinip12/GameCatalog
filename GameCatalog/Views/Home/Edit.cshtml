@@ -1,0 +1,47 @@
+﻿@{
+	ViewBag.Title = "Edit";
+	Layout = "_Layout";
+}
+
+@model GameCatalog.ViewModels.EditVM
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>Edit the desired Game</p>
+					<h1>Edit Game</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end breadcrumb section -->
+
+<div class="contact-form mt-150 mb-150" style="margin-top:200px;">
+	<center>
+		<form action="/Home/Edit" method="post">
+			<input type="hidden" name="model.id" id="model.id" value="@Model.ID"></input>
+			<p>
+					<input type="text" placeholder="Title" name="model.Title" id="model.Title">
+							
+			<p>
+				<input type="text" placeholder="Description" name="model.description" id="model.description">
+			
+			<input type="date" name="model.releasedate" id="model.releasedate"
+       value="2018-07-22"
+       min="2000-01-01" max="2023-12-31">
+				<p>
+			<p>
+				<input type="text" placeholder="Stars" name="model.stars" id="model.stars">
+			</p>
+			<p>
+				<input type="text" placeholder="Dowlnloads" name="model.downloads" id="model.downloads">
+			</p>
+			
+			<p><input type="submit" value="Edit"></p>
+		</form>
+	</center>
+</div>

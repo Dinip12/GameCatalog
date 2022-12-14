@@ -1,0 +1,81 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home Page";
+}
+@model GameCatalog.ViewModels.Display
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-content">
+
+                    <!-- ***** Banner Start ***** -->
+                    <div class="main-banner">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="header-text">
+                                    <h6>Welcome To KiroGaming</h6>
+                                    
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ***** Banner End ***** -->
+                    <!-- ***** Most Popular Start <br><span>Sandbox</span>***** -->
+                    <div class="most-popular">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                    <div class="search-input">
+                                        <form action="/Home/Index" method="get" id="search">
+                                            <div placeholder="Type Something" id='searchText'>@Html.TextBoxFor(x => x.Filter.Title)</div>
+                                            <i class="fa fa-search"></i>
+                                        </form>
+                                    </div>
+
+                                    <div class="heading-section">
+                                    <h4><em>Most Popular</em> Right Now</h4>
+                                </div>
+                                <div class="row">
+                                    @foreach (var item in Model.Games)
+                                    {
+                                        <div class="col-lg-3 col-sm-6">
+                                            <div class="item">
+                                                <img src="@Url.Action("GetImage", "Home",new { id =  item.Id})" alt="">
+                                                <h4>@item.Title</h4>
+                                                <ul>
+                                                    <li><i class="fa fa-star"></i> @item.Stars</li>
+                                                    <li><i class="fa fa-download"></i> @item.Downloads</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
+                                        
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ </div>
+            <div style="margin-left:250px">
+                @{
+                    Html.RenderPartial("/Views/Shared/PagerPartial.cshtml", Model.Pager);
+                }
+            </div>
+
+
+</body>
+
+</html>
